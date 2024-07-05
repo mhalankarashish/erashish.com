@@ -1,10 +1,9 @@
-
-
 import 'package:erashish_com/constants/assets.dart';
 import 'package:erashish_com/constants/fonts.dart';
+import 'package:erashish_com/constants/masters.dart';
 import 'package:erashish_com/constants/strings.dart';
 import 'package:erashish_com/constants/text_styles.dart';
-import 'package:erashish_com/models/education.dart';
+import 'package:erashish_com/models/models.dart';
 import 'package:erashish_com/utils/screen_utils.dart';
 import 'package:erashish_com/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color(0xFFF7F8FA),
+      color: const Color(0xFFF7F8FA),
       child: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: (ScreenUtil.getInstance().setWidth(108))), //144
@@ -27,8 +26,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-
 
   //Screen Methods:-------------------------------------------------------------
   Widget _buildBody(BuildContext context, BoxConstraints constraints) {
@@ -90,11 +87,10 @@ class HomePage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Expanded(flex: 1, child: _buildContent(context)),
-          Divider(),
+          const Divider(),
           _buildCopyRightText(context),
           SizedBox(
               height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
-        
         ],
       ),
     );
@@ -116,7 +112,7 @@ class HomePage extends StatelessWidget {
       children: <Widget>[
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24.0 : 0.0),
         _buildAboutMe(context),
-        SizedBox(height: 4.0),
+        const SizedBox(height: 4.0),
         _buildHeadline(context),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 24.0),
         _buildSummary(),
@@ -127,7 +123,7 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   _buildEducation(),
-                  SizedBox(height: 24.0),
+                  const SizedBox(height: 24.0),
                   _buildSkills(context),
                 ],
               )
@@ -141,7 +137,7 @@ class HomePage extends StatelessWidget {
       text: TextSpan(
         // Note: Styles for TextSpans must be explicitly defined.
         // Child text spans will inherit styles from parent
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 14.0,
           color: Colors.black,
         ),
@@ -156,7 +152,7 @@ class HomePage extends StatelessWidget {
           TextSpan(
             text: Strings.me,
             style: TextStyles.heading.copyWith(
-              color: Color(0xFF50AFC0),
+              color: const Color(0xFF50AFC0),
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
             ),
           ),
@@ -176,7 +172,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildSummary() {
     return Padding(
-      padding: EdgeInsets.only(right: 80.0),
+      padding: const EdgeInsets.only(right: 80.0),
       child: Text(
         Strings.summary,
         style: TextStyles.body,
@@ -192,7 +188,7 @@ class HomePage extends StatelessWidget {
           flex: 1,
           child: _buildEducation(),
         ),
-        SizedBox(width: 40.0),
+        const SizedBox(width: 40.0),
         Expanded(
           flex: 1,
           child: _buildSkills(context),
@@ -201,69 +197,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Skills Methods:------------------------------------------------------------
-  final skills = [
-    '📱 Flutter',
-    '🟦 Dart',
-    '🔶 Kotlin',
-    '🍏 Swift',
-    '☕ Java',
-    '🤖 Android',
-    '🍎 iOS',
-    '⚛️ React Native',
-
-    '⚛️ React',
-    '🌐 HTML',
-    '🎨 CSS',
-    '🟨 JavaScript',
-    '⏭️ Next.js',
-    '🌀 Tailwind CSS',
-    '🟦 Bootstrap',
-
-    '🐍 Python',
-    '☕ Java',
-    '🌐 Django',
-    '🍃 Flask',
-    '🌱 Spring Boot',
-    '🐘 PHP',
-
-    '🐘 PostgreSQL',
-    '🟦 MySQL',
-    '🍃 MongoDB',
-    '📜 SQLite',
-    '🟡 Firestore',
-
-    '🚀 Heroku',
-    '☁️ AWS',
-    '🔵 DigitalOcean',
-    '🟡 Firebase',
-
-    '🐋 Docker',
-    '☸️ Kubernetes',
-    '⚙️ GitHub Actions',
-    '🟦 GitLab CI/CD',
-
-   
-
-    
-
-    '🔀 Git',
-    '🐙 GitHub',
-    '🦊 GitLab',
-    '🔵 Bitbucket',
-
-
-    '🔗 GraphQL',
-    '🌐 RESTful APIs',
-    '🟠 Hasura',
-
-
-  ];
-
   Widget _buildSkills(BuildContext context) {
-    final List<Widget> widgets = skills
+    final List<Widget> widgets = Masters.skills
         .map((skill) => Padding(
-              padding: EdgeInsets.only(right: 8.0,bottom: 5),
+              padding: const EdgeInsets.only(right: 8.0, bottom: 5),
               child: _buildSkillChip(context, skill),
             ))
         .toList();
@@ -273,7 +210,7 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _buildSkillsContainerHeading(),
-        SizedBox(height: 8.0),
+        const SizedBox(height: 8.0),
         Wrap(children: widgets),
 //        _buildNavigationArrows(),
       ],
@@ -291,50 +228,24 @@ class HomePage extends StatelessWidget {
     return Chip(
       label: Text(
         label,
-        style: 
-        
-        TextStyle(
-          color: Color(0xFF45405B),
-          
+        style: TextStyle(
+          color: const Color(0xFF45405B),
           fontSize: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 14.0,
         ),
-        
-       
       ),
     );
   }
-
-  final educationList = [
-    Education(
-      'Jan 2019',
-      'Present',
-      'Vesatogo Innovations Pvt. Ltd.',
-      'Co-Founder & CTO',
-    ),
-    Education(
-      'Jan 2018',
-      'Jan 2020',
-      'Digital Impact Squre,Tcs Foundation',
-      'Innovator',
-    ),
-  ];
 
   Widget _buildEducation() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _buildEducationContainerHeading(Strings.experience),
-        SizedBox(height: 8.0),
+        const SizedBox(height: 8.0),
         _buildEducationTimeline(),
-
-        SizedBox(height:20),
-
+        const SizedBox(height: 20),
         _buildEducationContainerHeading("Connect me"),
-        SizedBox(height:20),
-
-          _buildSocialIcons(),
-
-
+        _buildSocialIcons(),
       ],
     );
   }
@@ -346,46 +257,37 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildEducationSummary() {
-    return Text(
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      style: TextStyles.body,
-    );
-  }
-
   Widget _buildEducationTimeline() {
-    final List<Widget> widgets = educationList
+    final List<Widget> widgets = Masters.listExprience
         .map((education) => _buildEducationTile(education))
         .toList();
     return Column(children: widgets);
   }
 
-  Widget _buildEducationTile(Education education) {
+  Widget _buildEducationTile(ModelExprience education) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          Text(education.post,
+              style: const TextStyle(
+                fontFamily: Fonts.product,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF50AFC0),
+                height: 1.5,
+                fontSize: 15.0, //15.0
+                letterSpacing: 1.0,
+              )),
           Text(
-            '${education.post}',
-            style: TextStyle(
-    fontFamily: Fonts.product,
-    fontWeight: FontWeight.w600,
-   color: Color(0xFF50AFC0),
-    height: 1.5,
-    fontSize: 15.0, //15.0
-    letterSpacing: 1.0,
-  )
-          ),
-          Text(
-            '${education.organization}',
+            education.organization,
             style: TextStyles.body.copyWith(
-                color: Color(0xFF45405B),
-                  fontFamily: Fonts.product,
-    fontWeight: FontWeight.w500,
-    height: 1.5,
-    fontSize: 15.0, //15.0
-    letterSpacing: 1.0,
+              color: const Color(0xFF45405B),
+              fontFamily: Fonts.product,
+              fontWeight: FontWeight.w500,
+              height: 1.5,
+              fontSize: 15.0, //15.0
+              letterSpacing: 1.0,
             ),
           ),
           Text(
@@ -396,7 +298,8 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-_buildCopyRightText(BuildContext context) {
+
+  _buildCopyRightText(BuildContext context) {
     return Text(
       Strings.rights_reserved,
       style: TextStyles.body1.copyWith(
@@ -406,77 +309,28 @@ _buildCopyRightText(BuildContext context) {
   }
 
   Widget _buildSocialIcons() {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-
-        GestureDetector(
-          onTap: () {
-            html.window
-                .open("https://www.linkedin.com/in/zubairehman/", "Email");
-          },
-          child: Image.network(
-            Assets.emaul,
-            color: Color(0xFF45405B),
-            height: 20.0,
-            width: 20.0,
-          ),
-        ),
-        SizedBox(width: 16.0),
-        
-        GestureDetector(
-          onTap: () {
-            html.window
-                .open("https://www.linkedin.com/in/zubairehman/", "LinkedIn");
-          },
-          child: Image.network(
-            Assets.linkedin,
-            color: Color(0xFF45405B),
-            height: 20.0,
-            width: 20.0,
-          ),
-        ),
-        SizedBox(width: 16.0),
-        
-        GestureDetector(
-          onTap: () {
-            html.window.open("https://github.com/zubairehman", "Github");
-          },
-          child: Image.network(
-            Assets.git_hub,
-            color: Color(0xFF45405B),
-            height: 20.0,
-            width: 20.0,
-          ),
-        ),
-        SizedBox(width: 16.0),
-
-
-         GestureDetector(
-          onTap: () {
-            html.window.open("https://github.com/zubairehman", "Gitlab");
-          },
-          child: Image.network(
-            Assets.git_hub,
-            color: Color(0xFF45405B),
-            height: 20.0,
-            width: 20.0,
-          ),
-        ),
-        SizedBox(width: 16.0),
-        GestureDetector(
-          onTap: () {
-            html.window.open("https://twitter.com/zubair340", "Twitter");
-          },
-          child: Image.network(
-            Assets.twitter,
-            color: Color(0xFF45405B),
-            height: 20.0,
-            width: 20.0,
-          ),
-        ),
-      ],
+    return SizedBox(
+      height: 50,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          ModelSocialMedia item = Masters.listSocialMedia[index];
+          return Container(
+            margin: const EdgeInsets.only(right: 10,),
+            child: GestureDetector(
+              onTap: () {
+                html.window.open(item.uri, item.name);
+              },
+              child: Image.network(
+                item.asset,
+                height: 20.0,
+                width: 20.0,
+              ),
+            ),
+          );
+        },
+        itemCount: Masters.listSocialMedia.length,
+      ),
     );
   }
 }
